@@ -6,6 +6,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="${1:-$ROOT/dist}"
 STAGE="$(mktemp -d)"
 mkdir -p "$STAGE/$SLUG" "$OUT"
+OUT="$(cd "$OUT" && pwd)"
 cp -r "$ROOT/$SLUG.php" "$ROOT/uninstall.php" "$ROOT/readme.txt" "$ROOT/LICENSE" "$ROOT/includes" "$STAGE/$SLUG/"
 rm -f "$OUT/$SLUG.zip"
 (cd "$STAGE" && zip -qr "$OUT/$SLUG.zip" "$SLUG")
